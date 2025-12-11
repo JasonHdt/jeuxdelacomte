@@ -1,0 +1,81 @@
+/*
+Theme Name: jeuxdelacomte
+Theme URI: https://example.com/
+Author: Your Name
+Author URI: https://example.com/
+Description: Thème minimal pour WordPress — jeuxdelacomte
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: jeuxdelacomte
+*/
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Lobster&display=swap');
+
+:root{
+--primary-color: #b2385d;
+--secondary-color: #511a2e;
+--tertiary-color: #2c0e19;  
+--color-accent: #e3b447;
+
+--color-overlay: rgba(20, 26, 26, 0.1450980392);
+--color-menu: #093238;
+--color-light-bg: #f0ebe4;
+--color-black: #000;
+
+--font-primary: 'Instrument Sans', sans-serif;
+--font-accent: 'Lobster', cursive;
+
+/* -----------------------------
+  Divers
+----------------------------- */
+--transition-speed: 0.3s;
+
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+.bg-tertiary {
+    background-color: var(--tertiary-color);
+}
+.bg-menu {
+    background-color: var(--color-menu)
+}
+
+.menu__container {
+            transform: translateX(-100%);
+    transition: transform var(--transition-speed) ease;
+    will-change: transform;
+    z-index: 1000;
+}
+
+/* Overlay hidden by default, shown when menu is open */
+.menu-overlay {
+    position: fixed;
+    background: var(--color-overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    z-index: 900;
+}
+
+/* When menu is open, slide the panel in and show overlay */
+body.menu-open .menu__container {
+    transform: translateX(0);
+}
+
+body.menu-open .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.title {
+    font-family: var(--font-accent);
+}
+
+p{
+    font-family: var(--font-primary);
+}
