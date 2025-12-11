@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('menu-toggle');
+  // Support multiple toggle buttons (mobile and desktop) using a shared class
+  const toggles = document.querySelectorAll('.menu-toggle');
   const closeBtn = document.getElementById('cross');
   const overlay = document.querySelector('.menu-overlay');
 
   const openToggle = () => document.body.classList.toggle('menu-open');
   const closeMenu = () => document.body.classList.remove('menu-open');
 
-  if (toggle) {
-    toggle.addEventListener('click', openToggle);
+  if (toggles && toggles.length) {
+    toggles.forEach(t => t.addEventListener('click', openToggle));
   }
 
   if (closeBtn) {
