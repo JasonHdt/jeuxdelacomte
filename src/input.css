@@ -1,5 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Lobster&display=swap');
 @import "tailwindcss";
+@theme {
+  --primary-color: #b2385d;
+--secondary-color: #511a2e;
+--tertiary-color: #2c0e19;  
+--color-accent: #e3b447;
+
+--color-overlay: rgba(20, 26, 26, 0.1450980392);
+--color-menu: #093238;
+--color-light-bg: #f0ebe4;
+--color-black: #000;
+
+--font-primary: 'Instrument Sans', sans-serif;
+--font-accent: 'Lobster', cursive;
+
+/* -----------------------------
+  Divers
+----------------------------- */
+--transition-speed: 0.3s;
+
+}
 @layer components {
+  /* --------------------------------- overall -------------------------------- */
+
+p{
+    font-family: var(--font-primary);
+}
+h1 {
+  font-family: var(--font-accent);
+}
+  /* ----------------------------- 
+  OFF CANVAS MENU 
+  ---------------------------- */
+.menu__container {
+  @apply z-1000 h-screen fixed top-0 left-0 lg:w-1/3;
+            transform: translateX(-100%);
+    transition: transform var(--transition-speed) ease;
+    will-change: transform;
+    z-index: 1000;
+    background-color: var(--color-menu);
+}
+.menu-overlay {
+    position: fixed;
+    background: var(--color-overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    z-index: 900;
+}
+body.menu-open .menu__container {
+    transform: translateX(0);
+}
+body.menu-open .menu-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --------------------------------- 
+Header 
+--------------------------------- */
+
+.header__menubar_container {
+    @apply shadow-lg relative z-10;
+        background-color: var(--secondary-color);
+}
+.header__menubar_title {
+    @apply text-4xl py-2 flex items-center justify-center lg:text-8xl;
+}
+.header__menubar_navbar {
+    @apply z-1 flex px-2 gap-4 lg:hidden;
+}
   /* Button icon component: use @apply for Tailwind utilities
      and plain CSS for the hover arbitrary value. */
   .btn-icon {
